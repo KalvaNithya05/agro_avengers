@@ -6,7 +6,7 @@ API_BASE_URL = os.getenv("API_BASE_URL", "http://localhost:5000/api")
 API_URL = f"{API_BASE_URL}/sensor/data"
 
 # Data Collection Configuration
-COLLECTION_INTERVAL = 60  # Seconds between readings
+COLLECTION_INTERVAL = 3600  # Seconds between readings
 RETRY_DELAY = 10         # Seconds to wait before retrying failed request
 
 # Sensor Hardware Configuration (GPIO BCM)

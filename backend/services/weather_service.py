@@ -46,7 +46,7 @@ class WeatherService:
         """
         Returns random realistic weather data.
         """
-        return {
+        return { 
             'temperature': round(random.uniform(25.0, 35.0), 1),
             'humidity': round(random.uniform(40.0, 80.0), 1),
             'rainfall': round(random.choice([0, 0, 0, 10, 50]), 1) # Mostly dry, sometimes rain
