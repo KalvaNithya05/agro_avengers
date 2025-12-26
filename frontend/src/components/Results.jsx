@@ -1,5 +1,7 @@
 import React from 'react';
 import { Download } from 'lucide-react';
+import CropResult from './CropResult';
+import FertilizerTips from './FertilizerTips';
 
 const Results = ({ data, onDownload }) => {
     if (!data) return null;
@@ -17,31 +19,9 @@ const Results = ({ data, onDownload }) => {
                 </button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {data.recommendations.map((rec, index) => (
-                    <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition border border-gray-100">
-                        <div className="h-40 bg-green-50 flex flex-col items-center justify-center relative">
-                            {index === 0 && (
-                                <span className="absolute top-2 right-2 bg-yellow-400 text-yellow-900 text-xs font-bold px-2 py-1 rounded-full">
-                                    Top Choice
-                                </span>
-                            )}
-                            <span className="text-4xl mb-2">🌱</span>
-                            <span className="text-sm font-semibold text-green-800">{rec.confidence}% Match</span>
-                        </div>
-                        <div className="p-4">
-                            <h4 className="text-xl font-bold text-primary capitalize mb-2">{rec.crop}</h4>
-                            <div className="text-gray-600 text-sm space-y-1">
-                                <p className="font-semibold text-gray-700">Why this crop?</p>
-                                <ul className="list-disc list-inside">
-                                    {rec.reasoning.map((reason, i) => (
-                                        <li key={i}>{reason}</li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <CropResult results={data.crops} />
+                <FertilizerTips tips={data.fertilizer_recommendations} />
             </div>
 
             {data.weather && (

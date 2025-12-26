@@ -32,9 +32,9 @@ An AI-powered IoT solution to help Indian farmers optimize crop selection and fe
 2. Install dependencies: `npm install`.
 3. Start the app:
    ```bash
-   npm start
+   npm run dev
    ```
-   App runs on `http://localhost:3000`.
+   App runs on `http://localhost:5173` (default Vite port) or the one shown in terminal.
 
 ### 4. Raspberry Pi (Sensor Node)
 1. Navigate to `raspberry_pi/`.

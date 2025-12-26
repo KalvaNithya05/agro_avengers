@@ -48,6 +48,7 @@ class CropPredictor:
                 
                 # We need to reshape for transformation
                 features_array = np.array(features).reshape(1, -1)
+                print(f"DEBUG_PREDICTOR: Raw Features: {features_array}")
                 
                 # SAFETY CHECK: If inputs are all zeros (Sensor Failure), do not predict.
                 # Checking sum of absolute values or specific key nutrients
@@ -58,11 +59,16 @@ class CropPredictor:
                 # Apply scaling using the loaded scaler inside preprocessor
                 if self.preprocessor.scaler:
                     features_scaled = self.preprocessor.scaler.transform(features_array)
+                    print(f"DEBUG_PREDICTOR: Scaled Features: {features_scaled}")
                 else:
                     features_scaled = features_array
+                    print("DEBUG_PREDICTOR: No Scaler Found!")
 
                 # 2. Predict Probabilities
                 probs = self.agri_model.predict_proba(features_scaled)[0]
+                print(f"DEBUG_PREDICTOR: Probabilities: {probs}")
+                top_idx_debug = probs.argsort()[-1]
+                print(f"DEBUG_PREDICTOR: Top Class Index: {top_idx_debug}, Max Prob: {probs[top_idx_debug]}")
                 
                 # 3. Get Top N
                 top_indices = probs.argsort()[-top_n:][::-1]

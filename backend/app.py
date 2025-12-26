@@ -19,10 +19,12 @@ def create_app():
         from api.predict import predict_bp
         from api.sensor_data import sensor_bp
         from api.report import report_bp
+        from api.data import data_bp
 
         app.register_blueprint(predict_bp, url_prefix='/api/predict')
         app.register_blueprint(sensor_bp, url_prefix='/api/sensor') # '/api/sensor' matches pi config
         app.register_blueprint(report_bp, url_prefix='/api/report')
+        app.register_blueprint(data_bp, url_prefix='/api/data')
     except ImportError as e:
         print(f"Warning: Could not import some API blueprints: {e}")
         print("Note: This is expected during initial generation phase.")
@@ -40,4 +42,4 @@ def create_app():
 if __name__ == '__main__':
     app = create_app()
     port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port, debug=True)
+    app.run(host='0.0.0.0', port=port, debug=False, use_reloader=False)

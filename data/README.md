@@ -1,3 +1,22 @@
+# Data folder
+
+This project now uses the pan-India master dataset for training and inference.
+
+Place the master CSV in this folder with the filename:
+
+```
+mitti_mitra_master_dataset_all_india.csv
+```
+
+Example location after copying:
+
+```
+data/mitti_mitra_master_dataset_all_india.csv
+```
+
+Notes:
+- Older `Crop_recommendation.csv` has been removed — use the master dataset instead.
+- Training and inference scripts prefer the dataset in `data/` first; if not found they will fall back to `~/Downloads`.
 # Data Directory
 
 This folder should contain:

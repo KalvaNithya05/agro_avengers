@@ -4,7 +4,8 @@
 The backend is a Node.js + Express application that handles API requests, fetches weather data, and communicates with the Python ML model.
 
 ## Structure
-- `server.js`: Main entry point.
+- `app.py`: Main entry point (Flask).
+- `server.js`: Legacy/Alternative entry point (Node.js).
 - `routes/`: API route definitions.
 - `controllers/`: Request handling logic.
 - `services/`: External integrations (Weather, ML).
@@ -14,5 +15,5 @@ The backend is a Node.js + Express application that handles API requests, fetche
   - Body: `{ n, p, k, ph, city }`
 
 ## Running Locally
-1. `npm install`
-2. `npm start`
+1. `pip install -r ../requirements.txt`
+2. `python app.py`

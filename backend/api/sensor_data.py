@@ -62,14 +62,15 @@ def get_latest():
         except Exception as e:
             print(f"Fetch Error: {e}")
             
-    # Mock Fallback
+    # Mock Fallback (Simulated Dynamic Data)
+    import random
     return jsonify({
-        'temperature': 26.5,
-        'humidity': 55.0,
-        'ph': 6.8,
-        'nitrogen': 120,
-        'phosphorus': 40,
-        'potassium': 140,
-        'rainfall': 0,
+        'temperature': round(26.5 + random.uniform(-1.5, 1.5), 1),
+        'humidity': round(55.0 + random.uniform(-5, 5), 1),
+        'ph': round(6.8 + random.uniform(-0.2, 0.2), 2),
+        'nitrogen': int(120 + random.uniform(-10, 10)),
+        'phosphorus': int(40 + random.uniform(-5, 5)),
+        'potassium': int(140 + random.uniform(-5, 5)),
+        'rainfall': round(0 + random.uniform(0, 5), 1),
         'timestamp': datetime.now().isoformat()
     })
